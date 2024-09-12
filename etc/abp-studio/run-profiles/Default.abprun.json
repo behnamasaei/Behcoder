@@ -1,0 +1,10 @@
+﻿{
+  "applications": {
+    "Behcoder.Web": {
+      "type": "dotnet-project",
+      "launchUrl": "https://localhost:44327",
+      "path": "../../../src/Behcoder.Web/Behcoder.Web.csproj",
+      "kubernetesService": ".*-web$"
+    }
+  }
+}

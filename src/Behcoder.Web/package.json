@@ -1,0 +1,15 @@
+{
+	"version": "1.0.0",
+	"name": "my-app",
+	"private": true,
+	"dependencies": {
+		"@abp/aspnetcore.mvc.ui.theme.basic": "~8.2.2",
+		"@fontsource/source-sans-3": "^5.0.22",
+		"@popperjs/core": "^2.11.8",
+		"apexcharts": "^3.53.0",
+		"bootstrap-icons": "^1.11.3",
+		"jsvectormap": "^1.6.0",
+		"overlayscrollbars": "^2.10.0",
+		"sortablejs": "^1.15.3"
+	}
+}
