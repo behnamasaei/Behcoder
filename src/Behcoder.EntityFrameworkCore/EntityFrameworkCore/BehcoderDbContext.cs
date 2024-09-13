@@ -1,3 +1,4 @@
+using Behcoder.Domain.Blog.Category;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -57,10 +58,12 @@ public class BehcoderDbContext :
 
     #endregion
 
+
+    public DbSet<Category> Categories { get; set; }
+
     public BehcoderDbContext(DbContextOptions<BehcoderDbContext> options)
         : base(options)
     {
-
     }
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -78,14 +81,16 @@ public class BehcoderDbContext :
         builder.ConfigureOpenIddict();
         builder.ConfigureTenantManagement();
         builder.ConfigureBlobStoring();
-        
+
         /* Configure your own tables/entities inside here */
 
-        //builder.Entity<YourEntity>(b =>
-        //{
-        //    b.ToTable(BehcoderConsts.DbTablePrefix + "YourEntities", BehcoderConsts.DbSchema);
-        //    b.ConfigureByConvention(); //auto configure for the base class props
-        //    //...
-        //});
+        builder.Entity<Category>(b =>
+        {
+            b.ToTable(BehcoderConsts.DbTablePrefix + "Category", BehcoderConsts.DbSchema);
+            b.HasOne(x => x.Parent).WithMany(x => x.Childs).HasForeignKey(x => x.ParentId);
+            b.HasMany(x => x.Childs).WithOne(x => x.Parent).HasForeignKey(x => x.ParentId);
+
+            b.ConfigureByConvention(); //auto configure for the base class props
+        });
     }
 }

@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Behcoder.Domain.Shared\Behcoder.Domain.Shared.csproj" />
+    <ProjectReference Include="..\Behcoder.Domain\Behcoder.Domain.csproj" />
   </ItemGroup>
   
   <ItemGroup>
